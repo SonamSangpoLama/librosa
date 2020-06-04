@@ -64,7 +64,7 @@ def frames_to_samples(frames, hop_length=512, n_fft=None):
 
     Examples
     --------
-    >>> y, sr = librosa.load(librosa.util.example_audio_file())
+    >>> y, sr = librosa.load(librosa.ex('choice'))
     >>> tempo, beats = librosa.beat.beat_track(y, sr=sr)
     >>> beat_samples = librosa.frames_to_samples(beats)
     """
@@ -158,7 +158,7 @@ def frames_to_time(frames, sr=22050, hop_length=512, n_fft=None):
 
     Examples
     --------
-    >>> y, sr = librosa.load(librosa.util.example_audio_file())
+    >>> y, sr = librosa.load(librosa.ex('choice'))
     >>> tempo, beats = librosa.beat.beat_track(y, sr=sr)
     >>> beat_times = librosa.frames_to_time(beats, sr=sr)
     """
@@ -313,7 +313,7 @@ def blocks_to_frames(blocks, block_length):
     --------
     Get frame indices for each block in a stream
 
-    >>> filename = librosa.util.example_audio_file()
+    >>> filename = librosa.ex('brahms')
     >>> sr = librosa.get_samplerate(filename)
     >>> stream = librosa.stream(filename, block_length=16,
     ...                         frame_length=2048, hop_length=512)
@@ -356,7 +356,7 @@ def blocks_to_samples(blocks, block_length, hop_length):
     --------
     Get sample indices for each block in a stream
 
-    >>> filename = librosa.util.example_audio_file()
+    >>> filename = librosa.ex('brahms')
     >>> sr = librosa.get_samplerate(filename)
     >>> stream = librosa.stream(filename, block_length=16,
     ...                         frame_length=2048, hop_length=512)
@@ -404,7 +404,7 @@ def blocks_to_time(blocks, block_length, hop_length, sr):
     --------
     Get time indices for each block in a stream
 
-    >>> filename = librosa.util.example_audio_file()
+    >>> filename = librosa.ex('brahms')
     >>> sr = librosa.get_samplerate(filename)
     >>> stream = librosa.stream(filename, block_length=16,
     ...                         frame_length=2048, hop_length=512)
@@ -1611,12 +1611,11 @@ def times_like(X, sr=22050, hop_length=512, n_fft=None, axis=-1):
     --------
     Provide a feature matrix input:
 
-    >>> y, sr = librosa.load(librosa.util.example_audio_file())
-    >>> X = librosa.stft(y)
-    >>> times = librosa.times_like(X)
+    >>> y, sr = librosa.load(librosa.ex('trumpet'))
+    >>> D = librosa.stft(y)
+    >>> times = librosa.times_like(D)
     >>> times
-    array([  0.00000000e+00,   2.32199546e-02,   4.64399093e-02, ...,
-             6.13935601e+01,   6.14167800e+01,   6.14400000e+01])
+    array([0.   , 0.023, ..., 5.294, 5.317])
 
     Provide a scalar input:
 
@@ -1664,11 +1663,11 @@ def samples_like(X, hop_length=512, n_fft=None, axis=-1):
     --------
     Provide a feature matrix input:
 
-    >>> y, sr = librosa.load(librosa.util.example_audio_file())
+    >>> y, sr = librosa.load(librosa.ex('trumpet'))
     >>> X = librosa.stft(y)
     >>> samples = librosa.samples_like(X)
     >>> samples
-    array([      0,     512,    1024, ..., 1353728, 1354240, 1354752])
+    array([     0,    512, ..., 116736, 117248])
 
     Provide a scalar input:
 
